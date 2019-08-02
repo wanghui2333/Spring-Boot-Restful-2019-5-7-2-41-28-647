@@ -9,34 +9,34 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/user")
 //ToDo:在上一行代码("")中填写合适的RestfulApi
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("")
+    @GetMapping(value = {"/all-user",""})
     //ToDo:在上一行代码("")中填写合适的RestfulApi
     public ResponseEntity getAllUser() {
         return new ResponseEntity<>(userService.getAllUser(), HttpStatus.OK);
     }
 
-    @PostMapping("")
+    @PostMapping("/add-user")
     //ToDo:在上一行代码("")中填写合适的RestfulApi
     public ResponseEntity addUser(@RequestBody User user) {
         userService.addUser(user);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
-    @PutMapping("")
+    @PutMapping("/update-user")
     //ToDo:在上一行代码("")中填写合适的RestfulApi
     public ResponseEntity updateUserById(@PathVariable int userId, @RequestBody User user) throws BusinessException {
         userService.updateUserById(userId, user);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("")
+    @DeleteMapping("/delete-user")
     //ToDo:在上一行代码("")中填写合适的RestfulApi
     public ResponseEntity deleteUserById(@PathVariable int userId) throws BusinessException {
         userService.deleteUserById(userId);
